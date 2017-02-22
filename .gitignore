@@ -10,3 +10,4 @@ buildNumber.properties
 *vpp.bak*
 *vpp.lck*
 *.vux*
+/JEA62/nbproject/

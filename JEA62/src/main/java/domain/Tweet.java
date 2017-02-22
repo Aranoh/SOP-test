@@ -12,18 +12,23 @@ package domain;
 public class Tweet {
 
     private long id;
-    private String name;
+    private String message;
+    private User owner;
 
     public long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getMessage() {
+        return message;
     }
 
-    public Tweet(long id, String name) {
-        this.id = id;
-        this.name = name;
+    public User GetOwner() {
+        return this.owner;
+    }
+
+    public Tweet(String message, User owner) {
+        this.message = message;
+        this.owner = owner;
     }
 }

@@ -5,6 +5,8 @@
  */
 package domain;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author HP
@@ -12,26 +14,45 @@ package domain;
 public class User {
 
     private long id;
-    private String name;
+    private String username;
+    private ArrayList<User> following;
+    private ArrayList<Tweet> tweets;
 
     public long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public User(long id, String name) {
-        this.id = id;
-        this.name = name;
+    public User(String username) {
+        this.username = username;
+        this.following = new ArrayList<User>();
+        this.tweets = new ArrayList<Tweet>();
     }
 
-    private void createTweet(String message) {
-
+    public ArrayList<User> getFollowing() {
+        return following;
     }
 
-    private void followUser(User target) {
+    public ArrayList<Tweet> getTweets() {
+        return tweets;
+    }
 
+    public void CreateTweet(String message) {
+        if (message == null || message.isEmpty()) {
+            return;
+        }
+
+        this.tweets.add(new Tweet(message, this));
+    }
+
+    public void FollowUser(User target) {
+        if (target == null) {
+            return;
+        }
+
+        this.following.add(target);
     }
 }
