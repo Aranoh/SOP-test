@@ -8,3 +8,5 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 *vpp.bak*
+*vpp.lck*
+*vpp.vux*
