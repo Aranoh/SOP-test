@@ -10,6 +10,20 @@ package domain;
  * @author HP
  */
 public class Tweet {
-    //test 1
-    // test 2
+
+    private long id;
+    private String name;
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Tweet(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

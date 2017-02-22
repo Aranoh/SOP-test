@@ -10,5 +10,28 @@ package domain;
  * @author HP
  */
 public class User {
-    
+
+    private long id;
+    private String name;
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public User(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    private void createTweet(String message) {
+
+    }
+
+    private void followUser(User target) {
+
+    }
 }
