@@ -5,12 +5,23 @@
  */
 package domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
 /**
  *
  * @author HP
  */
+@Entity
+@NamedQuery(name="Tweet.FindByUsername",
+                query="SELECT c FROM Tweet c WHERE c.Owner.username = :username")
+
 public class Tweet {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String message;
     private User owner;

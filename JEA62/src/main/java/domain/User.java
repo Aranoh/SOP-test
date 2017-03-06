@@ -6,11 +6,15 @@
 package domain;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author HP
  */
+@Entity
+@NamedQuery(name = "User.getFollowersByUsername", query ="SELECT c FROM Tweet c WHERE c.following.username = :username")
 public class User {
 
     private long id;
