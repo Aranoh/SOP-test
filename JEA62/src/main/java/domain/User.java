@@ -6,20 +6,30 @@
 package domain;
 
 import java.util.ArrayList;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author HP
  */
 @Entity
-@NamedQuery(name = "User.getFollowersByUsername", query ="SELECT c FROM Tweet c WHERE c.following.username = :username")
+@NamedQuery(name = "User.getFollowersByUsername", query = "SELECT u FROM Users u WHERE u.following.username = :username")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(unique = true)
     private String username;
+    @OneToMany
     private ArrayList<User> following;
+    @OneToMany(mappedBy = "owner")
     private ArrayList<Tweet> tweets;
 
     public long getId() {

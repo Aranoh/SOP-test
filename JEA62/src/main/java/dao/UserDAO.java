@@ -26,10 +26,10 @@ public class UserDAO {
         em.persist(user);
     }
 
-    public List<User> getFollowers(User user) {
+    public List<User> GetFollowers(User user) {
         Query q = em.createNamedQuery("User.getFollowersByUsername");
         q.setParameter("username", user.getUsername());
-        .getResultList();
+        return q.getResultList();
     }
     
 }
