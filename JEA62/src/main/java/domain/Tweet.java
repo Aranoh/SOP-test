@@ -5,6 +5,7 @@
  */
 package domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ import javax.persistence.OneToOne;
  * @author HP
  */
 @Entity
-@NamedQuery(name = "Tweet.findByUsername", query = "SELECT t FROM Tweet t WHERE t.Owner.username = :username")
+//@NamedQuery(name = "Tweet.findByUsername", query = "SELECT t FROM Tweet t WHERE t.Owner.username = :username")
 
 public class Tweet {
 
@@ -25,7 +26,7 @@ public class Tweet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String message;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private User owner;
 
     public long getId() {
@@ -38,6 +39,10 @@ public class Tweet {
 
     public User GetOwner() {
         return this.owner;
+    }
+
+    public Tweet() {
+        message = "default";
     }
 
     public Tweet(String message, User owner) {

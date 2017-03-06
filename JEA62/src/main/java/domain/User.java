@@ -6,6 +6,8 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +20,8 @@ import javax.persistence.OneToMany;
  *
  * @author HP
  */
-@Entity
-@NamedQuery(name = "User.getFollowersByUsername", query = "SELECT u FROM Users u WHERE u.following.username = :username")
+@Entity(name = "JPAUser")
+//@NamedQuery(name = "User.getFollowersByUsername", query = "SELECT u FROM User u WHERE u.following.username = :username")
 public class User {
 
     @Id
@@ -27,9 +29,9 @@ public class User {
     private long id;
     @Column(unique = true)
     private String username;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private ArrayList<User> following;
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private ArrayList<Tweet> tweets;
 
     public long getId() {
@@ -38,6 +40,10 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public User() {
+        username = "default";
     }
 
     public User(String username) {
