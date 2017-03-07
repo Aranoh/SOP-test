@@ -40,12 +40,12 @@ public class InitTweet {
         Tweet hallo4 = new Tweet("Hallo - " + hans.getUsername(), hans);
         Tweet hallo5 = new Tweet("Hallo - " + sjaak.getUsername(), sjaak);
 
-        td.save(hallo);
-        td.save(hallo1);
-        td.save(hallo2);
-        td.save(hallo3);
-        td.save(hallo4);
-        td.save(hallo5);
+//        td.save(hallo);
+//        td.save(hallo1);
+//        td.save(hallo2);
+//        td.save(hallo3);
+//        td.save(hallo4);
+//        td.save(hallo5);
     }
 
 }
