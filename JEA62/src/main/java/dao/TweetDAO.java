@@ -22,16 +22,12 @@ import javax.persistence.Query;
 public class TweetDAO {
     
     @PersistenceContext
-    EntityManager em;
+    public EntityManager em;
 
     public void save(Tweet tweet) {
         em.persist(tweet);
     }
 
-    public List<Tweet> GetTweets(User owner) {
-        Query q = em.createNamedQuery("Tweet.findByUsername");
-        q.setParameter("username", owner.getUsername());
-        return q.getResultList();
-    }
+    
     
 }

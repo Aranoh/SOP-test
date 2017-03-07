@@ -6,6 +6,7 @@
 package service;
 
 import dao.UserDAO;
+import domain.Tweet;
 import domain.User;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -23,5 +24,9 @@ public class UserService {
     
     public List<User> GetFollowers(User user){
         return ud.GetFollowers(user);
+    }
+    
+    public List<Tweet> GetTweets(User user) {
+        return ud.GetTweets(user);
     }
 }

@@ -22,7 +22,7 @@ public class TweetService {
     @Inject
     TweetDAO td;
 
-    public List<Tweet> GetTweets(User user) {
-        return td.GetTweets(user);
-    }
+//    public List<Tweet> GetTweets(User user) {
+//        return td.GetTweets(user);
+//    }
 }

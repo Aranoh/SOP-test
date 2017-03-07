@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
  */
 @Entity(name = "JPAUser")
 //@NamedQuery(name = "User.getFollowersByUsername", query = "SELECT u FROM User u WHERE u.following.username = :username")
+//@NamedQuery(name = "User.getFollowersByUsername", query = "SELECT u FROM JPAUser_JPAUser u WHERE u.User2 = :username")
+//@NamedQuery(name = "User.getUserByName", query = "SELECT u FROM User u WHERE u.username = :username")
 public class User {
 
     @Id

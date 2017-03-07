@@ -5,6 +5,7 @@
  */
 package dao;
 
+import domain.Tweet;
 import domain.User;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,7 +21,7 @@ import javax.persistence.Query;
 public class UserDAO {
     
     @PersistenceContext
-    EntityManager em;
+    public EntityManager em;
 
     public void save(User user) {
         em.persist(user);
@@ -29,6 +30,19 @@ public class UserDAO {
     public List<User> GetFollowers(User user) {
         Query q = em.createNamedQuery("User.getFollowersByUsername");
         q.setParameter("username", user.getUsername());
+        return q.getResultList();
+    }
+    
+    public List<User> GetUserByName(String name)
+    {
+        Query q = em.createNamedQuery("User.getUserByName");
+        q.setParameter("username", name);
+        return q.getResultList();
+    }
+    
+    public List<Tweet> GetTweets(User owner) {
+        Query q = em.createNamedQuery("Tweet.findByUsername");
+        q.setParameter("username", owner.getUsername());
         return q.getResultList();
     }
     
