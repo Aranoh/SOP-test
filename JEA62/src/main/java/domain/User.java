@@ -6,13 +6,13 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -21,9 +21,10 @@ import javax.persistence.OneToMany;
  * @author HP
  */
 @Entity(name = "JPAUser")
-//@NamedQuery(name = "User.getFollowersByUsername", query = "SELECT u FROM User u WHERE u.following.username = :username")
-//@NamedQuery(name = "User.getFollowersByUsername", query = "SELECT u FROM JPAUser_JPAUser u WHERE u.User2 = :username")
-//@NamedQuery(name = "User.getUserByName", query = "SELECT u FROM User u WHERE u.username = :username")
+@NamedQueries({
+    @NamedQuery(name = "User.getFollowersByUser", query = "SELECT u FROM JPAUser as u WHERE u.following = :user"),
+    @NamedQuery(name = "User.getTweetsByUser", query = "SELECT t FROM Tweet as t WHERE t.owner = :user")
+})
 public class User {
 
     @Id

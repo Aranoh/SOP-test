@@ -28,21 +28,14 @@ public class UserDAO {
     }
 
     public List<User> GetFollowers(User user) {
-        Query q = em.createNamedQuery("User.getFollowersByUsername");
-        q.setParameter("username", user.getUsername());
+        Query q = em.createNamedQuery("User.getFollowersByUser");
+        q.setParameter("user", user);
         return q.getResultList();
     }
     
-    public List<User> GetUserByName(String name)
-    {
-        Query q = em.createNamedQuery("User.getUserByName");
-        q.setParameter("username", name);
-        return q.getResultList();
-    }
-    
-    public List<Tweet> GetTweets(User owner) {
-        Query q = em.createNamedQuery("Tweet.findByUsername");
-        q.setParameter("username", owner.getUsername());
+    public List<Tweet> GetTweets(User user) {
+        Query q = em.createNamedQuery("User.getTweetsByUser");
+        q.setParameter("user", user);
         return q.getResultList();
     }
     

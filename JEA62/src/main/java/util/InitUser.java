@@ -36,6 +36,7 @@ public class InitUser {
         bert.FollowUser(henk);
 
         henk.CreateTweet("Hallo - " + henk.getUsername());
+        henk.CreateTweet("Hallo2 - " + henk.getUsername());
         piet.CreateTweet("Hallo - " + piet.getUsername());
         bert.CreateTweet("Hallo - " + bert.getUsername());
         klaas.CreateTweet("Hallo - " + klaas.getUsername());
@@ -49,5 +50,4 @@ public class InitUser {
         ud.save(hans);
         ud.save(sjaak);
     }
-
 }

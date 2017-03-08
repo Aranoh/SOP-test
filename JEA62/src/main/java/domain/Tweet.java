@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -18,8 +17,6 @@ import javax.persistence.OneToOne;
  * @author HP
  */
 @Entity
-//@NamedQuery(name = "Tweet.findByUsername", query = "SELECT t FROM Tweet t WHERE t.Owner.username = :username")
-
 public class Tweet {
 
     @Id
