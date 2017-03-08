@@ -20,7 +20,7 @@ import javax.persistence.Query;
 @Stateless
 public class UserDAO {
     
-    @PersistenceContext
+    @PersistenceContext(name = "JEA62PU")
     public EntityManager em;
 
     public void save(User user) {

@@ -25,6 +25,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.12.1.1</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
@@ -39,5 +44,5 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
-    <name>JEA6</name>
+    <name>JEA62</name>
 </project>
