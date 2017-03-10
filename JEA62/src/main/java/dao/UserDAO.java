@@ -39,4 +39,9 @@ public class UserDAO {
         return q.getResultList();
     }
     
+    public List<User> getAllUsers(){
+        Query q = em.createNamedQuery("User.getUsers");
+        return q.getResultList();
+    }
+    
 }

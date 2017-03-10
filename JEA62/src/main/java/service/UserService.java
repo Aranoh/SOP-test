@@ -29,4 +29,8 @@ public class UserService {
     public List<Tweet> GetTweets(User user) {
         return ud.GetTweets(user);
     }
+    
+    public List<User> getAllUsers(){
+        return ud.getAllUsers();
+    }
 }

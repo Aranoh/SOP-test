@@ -23,7 +23,8 @@ import javax.persistence.OneToMany;
 @Entity(name = "JPAUser")
 @NamedQueries({
     @NamedQuery(name = "User.getFollowersByUser", query = "SELECT u FROM JPAUser as u WHERE u.following = :user"),
-    @NamedQuery(name = "User.getTweetsByUser", query = "SELECT t FROM Tweet as t WHERE t.owner = :user")
+    @NamedQuery(name = "User.getTweetsByUser", query = "SELECT t FROM Tweet as t WHERE t.owner = :user"),
+    @NamedQuery(name = "User.getUsers", query = "SELECT u FROM JPAUser u")
 })
 public class User {
 
