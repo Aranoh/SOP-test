@@ -30,7 +30,7 @@ public class UserService {
         return ud.GetTweets(user);
     }
     
-    public List<User> getAllUsers(){
+    public List<User> GetAllUsers(){
         return ud.getAllUsers();
     }
 }
