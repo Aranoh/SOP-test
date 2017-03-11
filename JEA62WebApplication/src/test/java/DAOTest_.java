@@ -112,7 +112,7 @@ public class DAOTest_ {
 
     @Test
     public void TestGetFollwers() {
-        List<User> usersListUser1 = ud.GetFollowers(users[1]);
+        List<User> usersListUser1 = ud.getFollowers(users[1]);
         assertEquals(4, usersListUser1.size());
 
         assertTrue(usersListUser1.contains(users[2]));
@@ -120,7 +120,7 @@ public class DAOTest_ {
         assertTrue(usersListUser1.contains(users[4]));
         assertTrue(usersListUser1.contains(users[5]));
 
-        List<User> usersListUser2 = ud.GetFollowers(users[1]);
+        List<User> usersListUser2 = ud.getFollowers(users[1]);
         assertEquals(7, usersListUser2.size());
 
         assertTrue(usersListUser2.contains(users[2]));
@@ -135,8 +135,8 @@ public class DAOTest_ {
 
     @Test
     public void GetTweetsFromUser() {
-        List<Tweet> tweetsUser3 = ud.GetTweets(users[3]);
-        List<Tweet> tweetsUser4 = ud.GetTweets(users[4]);
+        List<Tweet> tweetsUser3 = ud.getTweets(users[3]);
+        List<Tweet> tweetsUser4 = ud.getTweets(users[4]);
 
         assertEquals(tweetsUser3, users[3].getTweets());
         assertEquals(tweetsUser4, users[4].getTweets());

@@ -23,11 +23,11 @@ public class UserService {
     UserDAO ud;
     
     public List<User> GetFollowers(User user){
-        return ud.GetFollowers(user);
+        return ud.getFollowers(user);
     }
     
     public List<Tweet> GetTweets(User user) {
-        return ud.GetTweets(user);
+        return ud.getTweets(user);
     }
     
     public List<User> GetAllUsers(){

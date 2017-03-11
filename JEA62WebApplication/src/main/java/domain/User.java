@@ -28,11 +28,9 @@ import javax.persistence.Table;
  */
 @Entity(name = "JPAUser")
 @NamedQueries({
-    @NamedQuery(name = "User.getFollowersByUser", query = "SELECT u FROM JPAUser as u WHERE u.following = :user")
-    ,
-    @NamedQuery(name = "User.getTweetsByUser", query = "SELECT t FROM Tweet as t WHERE t.owner = :user")
-    ,
-    @NamedQuery(name = "User.getUsers", query = "SELECT u FROM JPAUser u")
+    @NamedQuery(name = "User.getFollowersByUser", query = "SELECT u FROM JPAUser as u WHERE u.following = :user"),
+    @NamedQuery(name = "User.getTweetsByUser", query = "SELECT t FROM Tweet as t WHERE t.owner = :user"),
+    @NamedQuery(name = "User.getAllUsers", query = "SELECT u FROM JPAUser u")
 })
 public class User {
 
@@ -57,7 +55,6 @@ public class User {
 //    public void setGroups(List<Group> groups) {
 //        this.groups = groups;
 //    }
-
     public long getId() {
         return id;
     }
@@ -75,7 +72,7 @@ public class User {
         this.following = new ArrayList<User>();
         this.tweets = new ArrayList<Tweet>();
     }
-    
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -106,7 +103,7 @@ public class User {
 
         this.following.add(target);
     }
-    
+
 //    public void JoinGroup(String groupname)
 //    {
 //        groups.add(new Group(groupname));
@@ -137,5 +134,4 @@ public class User {
 //        private List<User> users;
 //
 //    }
-
 }

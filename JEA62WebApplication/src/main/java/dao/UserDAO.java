@@ -27,20 +27,20 @@ public class UserDAO {
         em.persist(user);
     }
 
-    public List<User> GetFollowers(User user) {
+    public List<User> getFollowers(User user) {
         Query q = em.createNamedQuery("User.getFollowersByUser");
         q.setParameter("user", user);
         return q.getResultList();
     }
     
-    public List<Tweet> GetTweets(User user) {
+    public List<Tweet> getTweets(User user) {
         Query q = em.createNamedQuery("User.getTweetsByUser");
         q.setParameter("user", user);
         return q.getResultList();
     }
     
     public List<User> getAllUsers(){
-        Query q = em.createNamedQuery("User.getUsers");
+        Query q = em.createNamedQuery("User.getAllUsers");
         return q.getResultList();
     }
     
