@@ -45,22 +45,31 @@ public class User {
     private ArrayList<User> following;
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private ArrayList<Tweet> tweets;
-//    @ManyToMany(mappedBy = "users")
-//    private List<Group> groups;
-//
-//    public List<Group> getGroups() {
-//        return groups;
-//    }
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.PERSIST)
+    private List<Group> groups;
 
-//    public void setGroups(List<Group> groups) {
-//        this.groups = groups;
-//    }
     public long getId() {
         return id;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public ArrayList<User> getFollowing() {
+        return following;
+    }
+
+    public ArrayList<Tweet> getTweets() {
+        return tweets;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     public User() {
@@ -71,21 +80,12 @@ public class User {
         this.username = username;
         this.following = new ArrayList<User>();
         this.tweets = new ArrayList<Tweet>();
+        this.groups = new ArrayList<Group>();
     }
 
     public User(String username, String password) {
-        this.username = username;
+        this(username);
         this.password = password;
-        this.following = new ArrayList<User>();
-        this.tweets = new ArrayList<Tweet>();
-    }
-
-    public ArrayList<User> getFollowing() {
-        return following;
-    }
-
-    public ArrayList<Tweet> getTweets() {
-        return tweets;
     }
 
     public void CreateTweet(String message) {
@@ -104,34 +104,7 @@ public class User {
         this.following.add(target);
     }
 
-//    public void JoinGroup(String groupname)
-//    {
-//        groups.add(new Group(groupname));
-//    }
-//
-//    @Entity
-//    @Table(name = "JPAGroup")
-//    public class Group implements Serializable {
-//
-//        public Group(String groupname)
-//        {
-//            this.groupName = groupname;
-//        }
-//        
-//        public Group()
-//        {
-//            groupName = "default";
-//        }
-//        
-//        @Id
-//        private String groupName;
-//        @ManyToMany
-//        @JoinTable(name = "USER_GROUP",
-//                joinColumns = @JoinColumn(name = "groupName",
-//                        referencedColumnName = "groupName"),
-//                inverseJoinColumns = @JoinColumn(name = "userName",
-//                        referencedColumnName = "userName"))
-//        private List<User> users;
-//
-//    }
+    public void JoinGroup(String groupname) {
+        this.groups.add(new Group(groupname));
+    }
 }

@@ -35,7 +35,7 @@ public class InitUser {
         piet.FollowUser(henk);
         bert.FollowUser(henk);
         
-//        henk.JoinGroup("admin");
+        henk.JoinGroup("admin");
 //        piet.JoinGroup("user");
 //        bert.JoinGroup("user");
 //        klaas.JoinGroup("user");
