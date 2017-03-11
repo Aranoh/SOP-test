@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Resources;
+package nl.fhict.jea.boundary.rest;
 
 import domain.User;
 import java.util.List;
@@ -27,7 +27,7 @@ public class UserResource {
     @GET
     public List<User> allUsers()
     {
-        return us.getAllUsers();
+        return us.GetAllUsers();
     }
     
 }

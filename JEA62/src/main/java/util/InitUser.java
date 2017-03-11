@@ -25,15 +25,22 @@ public class InitUser {
 
     @PostConstruct
     public void init() {
-        User henk = new User("Henk");
-        User piet = new User("Piet");
-        User bert = new User("Bert");
-        User klaas = new User("Klaas");
-        User hans = new User("Hans");
-        User sjaak = new User("Sjaak");
+        User henk = new User("Henk", "Geheim");
+        User piet = new User("Piet", "Geheim");
+        User bert = new User("Bert", "Geheim");
+        User klaas = new User("Klaas", "Geheim");
+        User hans = new User("Hans", "Geheim");
+        User sjaak = new User("Sjaak", "Geheim");
 
         piet.FollowUser(henk);
         bert.FollowUser(henk);
+        
+//        henk.JoinGroup("admin");
+//        piet.JoinGroup("user");
+//        bert.JoinGroup("user");
+//        klaas.JoinGroup("user");
+//        hans.JoinGroup("user");
+//        sjaak.JoinGroup("user");
 
         henk.CreateTweet("Hallo - " + henk.getUsername());
         henk.CreateTweet("Hallo2 - " + henk.getUsername());
