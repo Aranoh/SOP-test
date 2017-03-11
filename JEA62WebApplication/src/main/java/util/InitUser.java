@@ -6,6 +6,7 @@
 package util;
 
 import dao.UserDAO;
+import domain.Group;
 import domain.User;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -25,36 +26,38 @@ public class InitUser {
 
     @PostConstruct
     public void init() {
-        User henk = new User("Henk", "Geheim");
-        User piet = new User("Piet", "Geheim");
-        User bert = new User("Bert", "Geheim");
-        User klaas = new User("Klaas", "Geheim");
-        User hans = new User("Hans", "Geheim");
-        User sjaak = new User("Sjaak", "Geheim");
+        User henk = new User("Henk", "geheim");
+        User piet = new User("Piet", "geheim");
+        User bert = new User("Bert", "geheim");
+        User klas = new User("Klas", "geheim");
+        User hans = new User("Hans", "geheim");
+        User sjak = new User("Sjak", "geheim");
 
         piet.FollowUser(henk);
         bert.FollowUser(henk);
         
-        henk.JoinGroup("admin");
-//        piet.JoinGroup("user");
+        henk.JoinGroup("user");
 //        bert.JoinGroup("user");
-//        klaas.JoinGroup("user");
+//        klas.JoinGroup("user");
 //        hans.JoinGroup("user");
-//        sjaak.JoinGroup("user");
+//        sjak.JoinGroup("user");
+//        piet.JoinGroup("admin");
 
         henk.CreateTweet("Hallo - " + henk.getUsername());
-        henk.CreateTweet("Hallo2 - " + henk.getUsername());
+        
         piet.CreateTweet("Hallo - " + piet.getUsername());
         bert.CreateTweet("Hallo - " + bert.getUsername());
-        klaas.CreateTweet("Hallo - " + klaas.getUsername());
+        klas.CreateTweet("Hallo - " + klas.getUsername());
         hans.CreateTweet("Hallo - " + hans.getUsername());
-        sjaak.CreateTweet("Hallo - " + sjaak.getUsername());
-
+        sjak.CreateTweet("Hallo - " + sjak.getUsername());
+        
+        henk.CreateTweet("Hallo2 - " + henk.getUsername());
+        
         ud.save(henk);
         ud.save(piet);
         ud.save(bert);
-        ud.save(klaas);
+        ud.save(klas);
         ud.save(hans);
-        ud.save(sjaak);
+        ud.save(sjak);
     }
 }
