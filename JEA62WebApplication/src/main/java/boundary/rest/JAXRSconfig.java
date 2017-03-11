@@ -1,18 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package boundary.rest;
+
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
+ * Configures a JAX-RS endpoint. Delete this class, if you are not exposing
+ * JAX-RS resources in your application.
  *
- * @author 878550
+ * @author airhacks.com
  */
-@ApplicationPath("api")
-public class JAXRSconfig extends Application{
-    
+@ApplicationPath("resources")
+public class JAXRSconfig extends Application {
+
 }

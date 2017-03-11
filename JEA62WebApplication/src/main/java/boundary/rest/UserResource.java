@@ -5,26 +5,29 @@
  */
 package boundary.rest;
 
-import domain.Coffee;
+import domain.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import service.CoffeeService;
+import service.UserService;
 
 /**
  *
- * @author 878550
+ * @author Tom
  */
 @Stateless
-@Path("coffee")
-public class CoffeeResource {
+@Path("Kwetter")
+public class UserResource {
+    
     @Inject
-    CoffeeService cs;
+    UserService us;
     
     @GET
-    public List<Coffee> allCoffee(){
-        return cs.allCoffee();
+    public List<User> allUsers()
+    {
+        return us.GetAllUsers();
     }
+    
 }
