@@ -5,8 +5,21 @@
             30
         </session-timeout>
     </session-config>
+    <security-constraint>
+        <display-name>Default_constraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>Secure Pages</web-resource-name>
+            <description>default contraint for default users</description>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
     <login-config>
         <auth-method>BASIC</auth-method>
+        <realm-name>security_realm</realm-name>
     </login-config>
     <security-role>
         <description/>
@@ -15,5 +28,5 @@
     <security-role>
         <description/>
         <role-name>user</role-name>
-    </security-role>
+    </security-role>    
 </web-app>
