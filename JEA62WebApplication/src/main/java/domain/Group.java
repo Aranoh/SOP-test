@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -23,6 +25,12 @@ public class Group {
     @Id
     private String groupName;
     @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name="JPAUSER_JPAGROUP",
+joinColumns = @JoinColumn(name = "groupName",
+referencedColumnName = "groupName"),
+inverseJoinColumns = @JoinColumn(name = "userName",
+referencedColumnName = "userName"))
+
     private ArrayList<User> users;
 
     public Group() {
