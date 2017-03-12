@@ -32,9 +32,9 @@ public class InitUser {
         User henk = new User("Henk", "Geheim");
         User piet = new User("Piet", "Geheim");
         User bert = new User("Bert", "Geheim");
-        User klaas = new User("Klaas", "Geheim");
+        User klas = new User("Klaas", "Geheim");
         User hans = new User("Hans", "Geheim");
-        User sjaak = new User("Sjaak", "Geheim");
+        User sjak = new User("Sjaak", "Geheim");
 
         piet.FollowUser(henk);
         bert.FollowUser(henk);
@@ -42,23 +42,23 @@ public class InitUser {
         henk.JoinGroup(userGroup);
         piet.JoinGroup(userGroup);
         bert.JoinGroup(userGroup);
-        klaas.JoinGroup(userGroup);
+        klas.JoinGroup(userGroup);
         hans.JoinGroup(userGroup);
-        sjaak.JoinGroup(userGroup);
+        sjak.JoinGroup(userGroup);
 
         henk.CreateTweet("Hallo - " + henk.getUsername());
         henk.CreateTweet("Hallo2 - " + henk.getUsername());
         piet.CreateTweet("Hallo - " + piet.getUsername());
         bert.CreateTweet("Hallo - " + bert.getUsername());
-        klaas.CreateTweet("Hallo - " + klaas.getUsername());
+        klas.CreateTweet("Hallo - " + klas.getUsername());
         hans.CreateTweet("Hallo - " + hans.getUsername());
-        sjaak.CreateTweet("Hallo - " + sjaak.getUsername());
+        sjak.CreateTweet("Hallo - " + sjak.getUsername());
 
         ud.save(henk);
         ud.save(piet);
         ud.save(bert);
-        ud.save(klaas);
+        ud.save(klas);
         ud.save(hans);
-        ud.save(sjaak);
+        ud.save(sjak);
     }
 }
