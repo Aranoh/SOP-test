@@ -6,7 +6,7 @@
 package util;
 
 import dao.UserDAO;
-import domain.Group;
+import security.Group;
 import domain.User;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;

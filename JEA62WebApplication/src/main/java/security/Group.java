@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package security;
 
+import domain.User;
 import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,11 +26,17 @@ public class Group {
     @Id
     private String groupName;
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name="JPAUSER_JPAGROUP",
-joinColumns = @JoinColumn(name = "groupName",
-referencedColumnName = "groupName"),
-inverseJoinColumns = @JoinColumn(name = "userName",
-referencedColumnName = "userName"))
+    @JoinTable(
+            name="JPAUSER_JPAGROUP",
+            joinColumns = @JoinColumn(
+                    name = "groupName",
+                    referencedColumnName = "groupName"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "userName",
+                    referencedColumnName = "userName"
+            )
+    )
 
     private ArrayList<User> users;
 
