@@ -5,16 +5,31 @@
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
     <security-constraint>
-        <display-name>Default_constraint</display-name>
+        <display-name>User</display-name>
         <web-resource-collection>
-            <web-resource-name>Secure Pages</web-resource-name>
+            <web-resource-name>User Pages</web-resource-name>
             <description>default contraint for default users</description>
-            <url-pattern>/*</url-pattern>
+            <url-pattern>/user.html</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
             <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Admin</display-name>
+        <web-resource-collection>
+            <web-resource-name>Admin Pages</web-resource-name>
+            <description/>
+            <url-pattern>/admin.html</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
     <login-config>
@@ -28,5 +43,5 @@
     <security-role>
         <description/>
         <role-name>user</role-name>
-    </security-role>    
+    </security-role>
 </web-app>
