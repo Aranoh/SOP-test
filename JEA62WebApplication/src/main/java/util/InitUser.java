@@ -6,6 +6,7 @@
 package util;
 
 import dao.UserDAO;
+import domain.Group;
 import domain.User;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -25,6 +26,9 @@ public class InitUser {
 
     @PostConstruct
     public void init() {
+        Group userGroup = new Group("user");
+        Group adminGroup = new Group("admin");
+        
         User henk = new User("Henk", "Geheim");
         User piet = new User("Piet", "Geheim");
         User bert = new User("Bert", "Geheim");
@@ -35,12 +39,12 @@ public class InitUser {
         piet.FollowUser(henk);
         bert.FollowUser(henk);
         
-        henk.JoinGroup("admin");
-//        piet.JoinGroup("user");
-//        bert.JoinGroup("user");
-//        klaas.JoinGroup("user");
-//        hans.JoinGroup("user");
-//        sjaak.JoinGroup("user");
+        henk.JoinGroup(userGroup);
+        piet.JoinGroup(userGroup);
+        bert.JoinGroup(userGroup);
+        klaas.JoinGroup(userGroup);
+        hans.JoinGroup(userGroup);
+        sjaak.JoinGroup(userGroup);
 
         henk.CreateTweet("Hallo - " + henk.getUsername());
         henk.CreateTweet("Hallo2 - " + henk.getUsername());

@@ -5,13 +5,10 @@
  */
 package domain;
 
-import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -21,17 +18,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "JPAGroup")
-public class Group implements Serializable {
+public class Group {
 
     @Id
     private String groupName;
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "USER_GROUP",
-            joinColumns = @JoinColumn(name = "groupName",
-                    referencedColumnName = "groupName"),
-            inverseJoinColumns = @JoinColumn(name = "userName",
-                    referencedColumnName = "userName"))
-    private List<User> users;
+    private ArrayList<User> users;
 
     public Group() {
         groupName = "default";
@@ -39,6 +31,10 @@ public class Group implements Serializable {
 
     public Group(String groupname) {
         this.groupName = groupname;
+        this.users = new ArrayList<User>();
     }
 
+    public void AddUser(User user) {
+        this.users.add(user);
+    }
 }

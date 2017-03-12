@@ -104,7 +104,8 @@ public class User {
         this.following.add(target);
     }
 
-    public void JoinGroup(String groupname) {
-        this.groups.add(new Group(groupname));
+    public void JoinGroup(Group group) {
+        group.AddUser((this));
+        this.groups.add(group);
     }
 }
