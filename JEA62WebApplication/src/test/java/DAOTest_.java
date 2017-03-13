@@ -21,6 +21,10 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import service.UserService;
 
 /**
  *
@@ -28,7 +32,13 @@ import javax.persistence.Persistence;
  */
 public class DAOTest_ {
 
+    @InjectMocks
+    UserService us;
+    
+    @Mock
     private static UserDAO ud;
+    
+    
     private static User[] users;
 
     public DAOTest_() {
@@ -136,7 +146,10 @@ public class DAOTest_ {
     @Test
     public void GetTweetsFromUser() {
         List<Tweet> tweetsUser3 = ud.getTweets(users[3]);
+        Mockito.verify(ud, Mockito.times(1)).getTweets(users[3]);
         List<Tweet> tweetsUser4 = ud.getTweets(users[4]);
+        Mockito.verify(ud, Mockito.times(1)).getTweets(users[4]);
+
 
         assertEquals(tweetsUser3, users[3].getTweets());
         assertEquals(tweetsUser4, users[4].getTweets());
