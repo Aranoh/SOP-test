@@ -29,12 +29,12 @@ public class InitUser {
         Group userGroup = new Group("user");
         Group adminGroup = new Group("admin");
         
-        User henk = new User("Henk", "Geheim");
-        User piet = new User("Piet", "Geheim");
-        User bert = new User("Bert", "Geheim");
-        User klas = new User("Klas", "Geheim");
-        User hans = new User("Hans", "Geheim");
-        User sjak = new User("Sjak", "Geheim");
+        User henk = new User("Henk", "d768ccc827c5d0aab5a460185dfbce2fb4f144f60edaa3cb66af9c086b03d87e");
+        User piet = new User("Piet", "d768ccc827c5d0aab5a460185dfbce2fb4f144f60edaa3cb66af9c086b03d87e");
+        User bert = new User("Bert", "d768ccc827c5d0aab5a460185dfbce2fb4f144f60edaa3cb66af9c086b03d87e");
+        User klas = new User("Klas", "d768ccc827c5d0aab5a460185dfbce2fb4f144f60edaa3cb66af9c086b03d87e");
+        User hans = new User("Hans", "d768ccc827c5d0aab5a460185dfbce2fb4f144f60edaa3cb66af9c086b03d87e");
+        User sjak = new User("Sjak", "d768ccc827c5d0aab5a460185dfbce2fb4f144f60edaa3cb66af9c086b03d87e");
 
         piet.FollowUser(henk);
         bert.FollowUser(henk);
