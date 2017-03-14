@@ -7,6 +7,7 @@ package security;
 
 import domain.User;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -38,7 +39,7 @@ public class Group {
             )
     )
 
-    private ArrayList<User> users;
+    private List<User> users;
 
     public Group() {
         groupName = "default";

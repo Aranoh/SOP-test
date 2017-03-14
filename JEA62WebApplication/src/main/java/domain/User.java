@@ -43,9 +43,9 @@ public class User {
     @Column
     private String password;
     @OneToMany(cascade = CascadeType.PERSIST)
-    private ArrayList<User> following;
+    private List<User> following;
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
-    private ArrayList<Tweet> tweets;
+    private List<Tweet> tweets;
     @ManyToMany(mappedBy = "users", cascade = CascadeType.PERSIST)
     private List<Group> groups;
 
@@ -57,11 +57,11 @@ public class User {
         return username;
     }
 
-    public ArrayList<User> getFollowing() {
+    public List<User> getFollowing() {
         return following;
     }
 
-    public ArrayList<Tweet> getTweets() {
+    public List<Tweet> getTweets() {
         return tweets;
     }
 
