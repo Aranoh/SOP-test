@@ -25,6 +25,7 @@ public class UserResource {
     UserService us;
     
     @GET
+    @Path("allusers")
     public List<User> allUsers()
     {
         return us.GetAllUsers();
