@@ -7,44 +7,36 @@ package controller;
 
 import domain.Tweet;
 import domain.User;
+import java.io.Serializable;
 import java.util.List;
-import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.PermitAll;
-import javax.annotation.security.RolesAllowed;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import service.UserService;
 
 /**
  *
  * @author Tom
  */
-
-@ManagedBean(name = "userBean")
+@Named
 @SessionScoped
-@DeclareRoles({"admin","user"})
-public class UserBean {
+
+public class UserBean implements Serializable {
+
+    private User gebruiker;
+
     @Inject
-    UserService us;
-    
-    User gebruiker;
-    
-    @PermitAll
-    public List<User> GetFollowers()
-    {
-        return us.GetFollowers(gebruiker);
+    private UserService us;
+
+    public List<User> getFollowers() {
+        return us.getFollowers(gebruiker);
     }
-    
-    @PermitAll
-    public List<Tweet> GetTweets()
-    {
-        return us.GetTweets(gebruiker);
+
+    public List<Tweet> getTweets() {
+        return us.getTweets(gebruiker);
     }
-    
-    @RolesAllowed("admin")
-    public List<User> GetAllUsers()
-    {
-        return us.GetAllUsers();
+
+    public List<User> getAllUsers() {
+        return us.getAllUsers();
     }
 }

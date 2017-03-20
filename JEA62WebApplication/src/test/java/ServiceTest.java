@@ -69,9 +69,9 @@ public class ServiceTest {
         users.get(4).CreateTweet("Message 5");
         users.get(4).CreateTweet("Message 6");
 
-        when(us.GetAllUsers()).thenReturn(users);
-        when(us.GetFollowers(users.get(2))).thenReturn(followers);
-        when(us.GetTweets(users.get(3))).thenReturn(users.get(3).getTweets());
+        when(us.getAllUsers()).thenReturn(users);
+        when(us.getFollowers(users.get(2))).thenReturn(followers);
+        when(us.getTweets(users.get(3))).thenReturn(users.get(3).getTweets());
     }
 
     @AfterClass
@@ -88,33 +88,33 @@ public class ServiceTest {
 
     @Test
     public void TestGetAllFollowers() {
-        assertTrue(us.GetFollowers(users.get(9)).isEmpty());
-        assertEquals(followers, us.GetFollowers(users.get(2)));
+        assertTrue(us.getFollowers(users.get(9)).isEmpty());
+        assertEquals(followers, us.getFollowers(users.get(2)));
     }
 
     @Test
     public void TestGetTweets() {
-        assertTrue(us.GetTweets(users.get(1)).isEmpty());
-        assertEquals(users.get(3).getTweets(), us.GetTweets(users.get(3)));
+        assertTrue(us.getTweets(users.get(1)).isEmpty());
+        assertEquals(users.get(3).getTweets(), us.getTweets(users.get(3)));
     }
 
     @Test
-    public void GetAllUsers() {
-        assertEquals(us.GetAllUsers(), users);
+    public void TestGetAllUsers() {
+        assertEquals(us.getAllUsers(), users);
     }
 
     @Test
     public void TestVerify() {
         UserService verifyUs = Mockito.mock(UserService.class);
-        when(verifyUs.GetAllUsers()).thenReturn(users);
+        when(verifyUs.getAllUsers()).thenReturn(users);
 
-        verifyUs.GetAllUsers();
-        verifyUs.GetAllUsers();
-        verifyUs.GetAllUsers();
-        verifyUs.GetAllUsers();
-        verifyUs.GetAllUsers();
+        verifyUs.getAllUsers();
+        verifyUs.getAllUsers();
+        verifyUs.getAllUsers();
+        verifyUs.getAllUsers();
+        verifyUs.getAllUsers();
 
-        verify(verifyUs, times(5)).GetAllUsers();
-        verify(verifyUs, never()).GetTweets(users.get(0));
+        verify(verifyUs, times(5)).getAllUsers();
+        verify(verifyUs, never()).getTweets(users.get(0));
     }
 }

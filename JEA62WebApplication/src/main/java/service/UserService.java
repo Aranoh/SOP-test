@@ -9,6 +9,9 @@ import dao.UserDAO;
 import domain.Tweet;
 import domain.User;
 import java.util.List;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -17,20 +20,24 @@ import javax.inject.Inject;
  * @author Mark van Drimmelen
  */
 @Stateless
+@DeclareRoles({"admin", "user"})
 public class UserService {
-    
+
     @Inject
     UserDAO ud;
-    
-    public List<User> GetFollowers(User user){
+
+    @PermitAll
+    public List<User> getFollowers(User user) {
         return ud.getFollowers(user);
     }
-    
-    public List<Tweet> GetTweets(User user) {
+
+    @PermitAll
+    public List<Tweet> getTweets(User user) {
         return ud.getTweets(user);
     }
-    
-    public List<User> GetAllUsers(){
+
+    @RolesAllowed("admin")
+    public List<User> getAllUsers() {
         return ud.getAllUsers();
     }
 }
