@@ -23,17 +23,19 @@ import service.UserService;
 
 public class UserBean implements Serializable {
 
-    private User gebruiker;
-
     @Inject
     private UserService us;
 
+    public User getLoggedInUser() {
+        return us.getLoggedInUser();
+    }
+
     public List<User> getFollowers() {
-        return us.getFollowers(gebruiker);
+        return us.getFollowers(us.getLoggedInUser());
     }
 
     public List<Tweet> getTweets() {
-        return us.getTweets(gebruiker);
+        return us.getTweets(us.getLoggedInUser());
     }
 
     public List<User> getAllUsers() {

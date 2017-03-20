@@ -19,7 +19,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class UserDAO {
-    
+
     @PersistenceContext(name = "JEA62PU")
     public EntityManager em;
 
@@ -27,21 +27,27 @@ public class UserDAO {
         em.persist(user);
     }
 
+    public User getUserByUsername(String username) {
+        Query q = em.createNamedQuery("User.getUserByUsername");
+        q.setParameter("username", username);
+        return (User) q.getSingleResult();
+    }
+
     public List<User> getFollowers(User user) {
         Query q = em.createNamedQuery("User.getFollowersByUser");
         q.setParameter("user", user);
         return q.getResultList();
     }
-    
+
     public List<Tweet> getTweets(User user) {
         Query q = em.createNamedQuery("User.getTweetsByUser");
         q.setParameter("user", user);
         return q.getResultList();
     }
-    
-    public List<User> getAllUsers(){
+
+    public List<User> getAllUsers() {
         Query q = em.createNamedQuery("User.getAllUsers");
         return q.getResultList();
     }
-    
+
 }

@@ -8,10 +8,13 @@ package service;
 import dao.UserDAO;
 import domain.Tweet;
 import domain.User;
+import java.security.Principal;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -23,11 +26,26 @@ import javax.inject.Inject;
 @DeclareRoles({"admin", "user"})
 public class UserService {
 
+    private User loggedInUser;
+
+    @Resource
+    private SessionContext sessionContext;
+
     @Inject
-    UserDAO ud;
+    private UserDAO ud;
+
+    public User getLoggedInUser() {
+        if(loggedInUser == null)
+        {
+            Principal p = sessionContext.getCallerPrincipal();
+            this.loggedInUser = ud.getUserByUsername(p.getName());
+        }
+        
+        return this.loggedInUser;
+    }
 
     @PermitAll
-    public List<User> getFollowers(User user) {
+    public List<User> getFollowers(User user) {        
         return ud.getFollowers(user);
     }
 

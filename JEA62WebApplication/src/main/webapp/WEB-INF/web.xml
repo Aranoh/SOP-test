@@ -27,7 +27,7 @@
         <web-resource-collection>
             <web-resource-name>User Pages</web-resource-name>
             <description>default contraint for default users</description>
-            <url-pattern>/user.html</url-pattern>
+            <url-pattern>/user.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
