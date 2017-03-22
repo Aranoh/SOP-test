@@ -10,8 +10,7 @@ buildNumber.properties
 *vpp.bak*
 *vpp.lck*
 *.vux*
-/JEA62/nbproject/
-/JEA62/nb-configuration.xml
-/JEA62WebApplication/build/
-/JEA62WebApplication/dist/
-/JEA62WebApplication/nbproject/
+build/
+dist/
+nbproject/
+nb-configuration.xml
