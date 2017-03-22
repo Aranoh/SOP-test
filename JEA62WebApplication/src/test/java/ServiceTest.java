@@ -29,7 +29,9 @@ import service.UserService;
  */
 public class ServiceTest {
 
+    
     private static UserService us;
+    private static UserDAO ud;
     private static List<User> users;
     private static List<User> followers;
 
@@ -38,7 +40,10 @@ public class ServiceTest {
 
     @BeforeClass
     public static void setUpClass() {
-        us = Mockito.mock(UserService.class);
+//        us = Mockito.mock(UserService.class);
+        us = new UserService();
+        ud = Mockito.mock(UserDAO.class);
+        us.setDAO(ud);
         users = new ArrayList<User>();
         followers = new ArrayList<User>();
 
@@ -69,9 +74,13 @@ public class ServiceTest {
         users.get(4).CreateTweet("Message 5");
         users.get(4).CreateTweet("Message 6");
 
-        when(us.GetAllUsers()).thenReturn(users);
-        when(us.GetFollowers(users.get(2))).thenReturn(followers);
-        when(us.GetTweets(users.get(3))).thenReturn(users.get(3).getTweets());
+//        when(us.GetAllUsers()).thenReturn(users);
+//        when(us.GetFollowers(users.get(2))).thenReturn(followers);
+//        when(us.GetTweets(users.get(3))).thenReturn(users.get(3).getTweets());
+
+        when(ud.getAllUsers()).thenReturn(users);
+        when(ud.getFollowers(users.get(2))).thenReturn(followers);
+        when(ud.getTweets(users.get(3))).thenReturn(users.get(3).getTweets());
     }
 
     @AfterClass
@@ -105,7 +114,8 @@ public class ServiceTest {
 
     @Test
     public void TestVerify() {
-        UserService verifyUs = Mockito.mock(UserService.class);
+        UserService verifyUs = new UserService();
+        verifyUs.setDAO(ud);
         when(verifyUs.GetAllUsers()).thenReturn(users);
 
         verifyUs.GetAllUsers();
@@ -114,7 +124,7 @@ public class ServiceTest {
         verifyUs.GetAllUsers();
         verifyUs.GetAllUsers();
 
-        verify(verifyUs, times(5)).GetAllUsers();
-        verify(verifyUs, never()).GetTweets(users.get(0));
+        verify(ud, times(5)).getAllUsers();
+        verify(ud, never()).getTweets(users.get(0));
     }
 }

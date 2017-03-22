@@ -33,4 +33,9 @@ public class UserService {
     public List<User> GetAllUsers(){
         return ud.getAllUsers();
     }
+    
+    public void setDAO(UserDAO dao)
+    {
+        this.ud = dao;
+    }
 }
