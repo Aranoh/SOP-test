@@ -97,32 +97,32 @@ public class ServiceTest {
 
     @Test
     public void TestGetAllFollowers() {
-        assertTrue(us.GetFollowers(users.get(9)).isEmpty());
-        assertEquals(followers, us.GetFollowers(users.get(2)));
+        assertTrue(us.getFollowers(users.get(9)).isEmpty());
+        assertEquals(followers, us.getFollowers(users.get(2)));
     }
 
     @Test
     public void TestGetTweets() {
-        assertTrue(us.GetTweets(users.get(1)).isEmpty());
-        assertEquals(users.get(3).getTweets(), us.GetTweets(users.get(3)));
+        assertTrue(us.getTweets(users.get(1)).isEmpty());
+        assertEquals(users.get(3).getTweets(), us.getTweets(users.get(3)));
     }
 
     @Test
-    public void GetAllUsers() {
-        assertEquals(us.GetAllUsers(), users);
+    public void TestGetAllUsers() {
+        assertEquals(us.getAllUsers(), users);
     }
 
     @Test
     public void TestVerify() {
         UserService verifyUs = new UserService();
         verifyUs.setDAO(ud);
-        when(verifyUs.GetAllUsers()).thenReturn(users);
+        when(verifyUs.getAllUsers()).thenReturn(users);
 
-        verifyUs.GetAllUsers();
-        verifyUs.GetAllUsers();
-        verifyUs.GetAllUsers();
-        verifyUs.GetAllUsers();
-        verifyUs.GetAllUsers();
+        verifyUs.getAllUsers();
+        verifyUs.getAllUsers();
+        verifyUs.getAllUsers();
+        verifyUs.getAllUsers();
+        verifyUs.getAllUsers();
 
         verify(ud, times(5)).getAllUsers();
         verify(ud, never()).getTweets(users.get(0));

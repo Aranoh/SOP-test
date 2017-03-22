@@ -28,7 +28,7 @@ public class UserResource {
     @Path("allusers")
     public List<User> allUsers()
     {
-        return us.GetAllUsers();
+        return us.getAllUsers();
     }
     
 }

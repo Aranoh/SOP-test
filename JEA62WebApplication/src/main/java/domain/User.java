@@ -6,7 +6,6 @@
 package domain;
 
 import security.Group;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,13 +14,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  *
@@ -29,6 +25,7 @@ import javax.persistence.Table;
  */
 @Entity(name = "JPAUser")
 @NamedQueries({
+    @NamedQuery(name = "User.getUserByUsername", query = "SELECT u FROM JPAUser as u WHERE u.username = :username"),
     @NamedQuery(name = "User.getFollowersByUser", query = "SELECT u FROM JPAUser as u WHERE u.following = :user"),
     @NamedQuery(name = "User.getTweetsByUser", query = "SELECT t FROM Tweet as t WHERE t.owner = :user"),
     @NamedQuery(name = "User.getAllUsers", query = "SELECT u FROM JPAUser u")
