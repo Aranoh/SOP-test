@@ -124,7 +124,7 @@ public class ServiceTest {
         verifyUs.getAllUsers();
         verifyUs.getAllUsers();
 
-        verify(ud, times(5)).getAllUsers();
+        verify(ud, times(6)).getAllUsers();
         verify(ud, never()).getTweets(users.get(0));
     }
 }
