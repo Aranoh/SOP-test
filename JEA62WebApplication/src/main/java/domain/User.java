@@ -34,7 +34,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(unique = true)
     private String username;
     @Column
@@ -46,7 +46,7 @@ public class User {
     @ManyToMany(mappedBy = "users", cascade = CascadeType.PERSIST)
     private List<Group> groups;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

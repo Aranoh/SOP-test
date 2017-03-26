@@ -35,17 +35,35 @@ public class UserService {
     private UserDAO ud;
 
     public User getLoggedInUser() {
-        if(loggedInUser == null)
-        {
+        if (loggedInUser == null) {
             Principal p = sessionContext.getCallerPrincipal();
             this.loggedInUser = ud.getUserByUsername(p.getName());
         }
-        
+
         return this.loggedInUser;
     }
 
+    public void setDAO(UserDAO dao) {
+        this.ud = dao;
+    }
+    
+    public void save(User user)
+    {
+        ud.save(user);
+    }
+
+    @RolesAllowed("admin")
+    public List<User> getAllUsers() {
+        return ud.getAllUsers();
+    }
+
     @PermitAll
-    public List<User> getFollowers(User user) {        
+    public User getUserByUsername(String username) {
+        return ud.getUserByUsername(username);
+    }
+
+    @PermitAll
+    public List<User> getFollowers(User user) {
         return ud.getFollowers(user);
     }
 
@@ -54,13 +72,4 @@ public class UserService {
         return ud.getTweets(user);
     }
 
-    @RolesAllowed("admin")
-    public List<User> getAllUsers() {
-        return ud.getAllUsers();
-    }
-    
-    public void setDAO(UserDAO dao)
-    {
-        this.ud = dao;
-    }
 }
