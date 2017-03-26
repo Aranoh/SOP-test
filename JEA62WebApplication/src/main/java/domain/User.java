@@ -93,7 +93,10 @@ public class User {
 
         this.tweets.add(new Tweet(message, this));
     }
-
+    
+    public void AddTweet(Tweet tweet) {
+        this.tweets.add(tweet);
+    }
     public void FollowUser(User target) {
         if (target == null) {
             return;
@@ -106,4 +109,6 @@ public class User {
         group.AddUser((this));
         this.groups.add(group);
     }
+
+    
 }

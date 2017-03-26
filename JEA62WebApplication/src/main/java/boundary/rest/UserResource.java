@@ -34,31 +34,37 @@ public class UserResource {
     @Context
     UriInfo uriInfo;
 
+    // Kwetter/admin/getallusers
     @GET
-    @Path("getAllUsers")
+    @Path("admin/getallusers")
     public List<User> getAllUsers() {
         return us.getAllUsers();
     }
 
+    // Kwetter/user/{username}
     @GET
-    @Path("{getUser}")
+    @Path("user/{username}")
     public User getUserByUsername(@PathParam("username") String username) {
         return us.getUserByUsername(username);
     }
 
+    // Kwetter/user/{username}/followers
     @GET
-    @Path("{getFollowers}")
-    public List<User> getFollowers(@PathParam("user") User user) {
-        return us.getFollowers(user);
+    @Path("user/{username}/followers")
+    public List<User> getFollowers(@PathParam("username") String username) {
+        return us.getFollowers(us.getUserByUsername(username));
     }
 
+    // Kwetter/user/{username}/tweets
     @GET
-    @Path("{getTweets}")
-    public List<Tweet> getTweets(@PathParam("user") User user) {
-        return us.getTweets(user);
+    @Path("user/{username}/tweets")
+    public List<Tweet> getTweets(@PathParam("username") String username) {
+        return us.getTweets(us.getUserByUsername(username));
     }
 
+    // Kwetter/adduser
     @POST
+    @Path("adduser")
     public Response addUser(User user) {
         us.save(user);
         URI uri = null;
@@ -69,15 +75,17 @@ public class UserResource {
         }
         return Response.created(uri).build();
     }
-
+   
+    // Kwetter/addtweet  
     @POST
-    public Response addTweet(User user, String message) {
-        user.CreateTweet(message);
-        us.save(user);
+    @Path("addtweet")
+    public Response addTweet(Tweet tweet) {
+        tweet.GetOwner().AddTweet(tweet);
+        us.save(tweet.GetOwner());
         URI uri = null;
-        if (user != null) {
+        if (tweet.GetOwner() != null) {
             uri = uriInfo.getAbsolutePathBuilder().
-                    path(user.getId().toString()).
+                    path(tweet.GetOwner().getId().toString()).
                     build();
         }
         return Response.created(uri).build();
