@@ -15,7 +15,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import service.UserService;
@@ -37,6 +39,7 @@ public class UserResource {
     // Kwetter/admin/getallusers
     @GET
     @Path("admin/getallusers")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<User> getAllUsers() {
         return us.getAllUsers();
     }
@@ -44,13 +47,17 @@ public class UserResource {
     // Kwetter/user/{username}
     @GET
     @Path("user/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
     public User getUserByUsername(@PathParam("username") String username) {
-        return us.getUserByUsername(username);
+        User userByUsername = us.getUserByUsername(username);
+        return userByUsername;
+
     }
 
     // Kwetter/user/{username}/followers
     @GET
     @Path("user/{username}/followers")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<User> getFollowers(@PathParam("username") String username) {
         return us.getFollowers(us.getUserByUsername(username));
     }
@@ -58,6 +65,7 @@ public class UserResource {
     // Kwetter/user/{username}/tweets
     @GET
     @Path("user/{username}/tweets")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Tweet> getTweets(@PathParam("username") String username) {
         return us.getTweets(us.getUserByUsername(username));
     }
@@ -75,17 +83,19 @@ public class UserResource {
         }
         return Response.created(uri).build();
     }
-   
+
     // Kwetter/addtweet  
     @POST
-    @Path("addtweet")
-    public Response addTweet(Tweet tweet) {
-        tweet.GetOwner().AddTweet(tweet);
-        us.save(tweet.GetOwner());
+    @Path("user/{username}/addtweet/{message}")
+    public Response addTweet(@PathParam("username") String username, @PathParam("message") String message) {
+//        User user = us.getUserByUserID(tweet.getOwnerID());
+        User user = us.getUserByUsername(username);
+        user.AddTweet(new Tweet(message, user));
+        us.save(user);
         URI uri = null;
-        if (tweet.GetOwner() != null) {
+        if (user != null) {
             uri = uriInfo.getAbsolutePathBuilder().
-                    path(tweet.GetOwner().getId().toString()).
+                    path(user.getId().toString()).
                     build();
         }
         return Response.created(uri).build();

@@ -46,30 +46,6 @@ public class User {
     @ManyToMany(mappedBy = "users", cascade = CascadeType.PERSIST)
     private List<Group> groups;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public List<User> getFollowing() {
-        return following;
-    }
-
-    public List<Tweet> getTweets() {
-        return tweets;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
-
     public User() {
         username = "default";
     }
@@ -109,6 +85,40 @@ public class User {
         group.AddUser((this));
         this.groups.add(group);
     }
-
+    
+    //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
+    public Long getId() {
+        return id;
+    }
+       
+    public String getUsername() {
+        return username;
+    }
+    
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public List<User> getFollowing() {
+        return following;
+    }
+       
+    public List<Tweet> getTweets() {
+        return tweets;
+    }
+    
+    public List<Group> getGroups() {
+        return groups;
+    }
+    
+//</editor-fold>
     
 }

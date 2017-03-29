@@ -52,7 +52,7 @@ public class DomainTest {
         users[3].CreateTweet("");
 
         assertEquals("Message 1", users[2].getTweets().get(0).getMessage());
-        assertEquals(users[2], users[2].getTweets().get(0).GetOwner());
+        assertEquals(users[2], users[2].getTweets().get(0).getOwner());
         assertTrue(users[3].getTweets().isEmpty());
     }
 

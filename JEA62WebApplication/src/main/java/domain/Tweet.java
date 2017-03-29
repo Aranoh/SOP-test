@@ -26,18 +26,6 @@ public class Tweet {
     @OneToOne(cascade = CascadeType.PERSIST)
     private User owner;
 
-    public long getId() {
-        return id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public User GetOwner() {
-        return this.owner;
-    }
-
     public Tweet() {
         message = "default";
     }
@@ -46,4 +34,29 @@ public class Tweet {
         this.message = message;
         this.owner = owner;
     }
+
+    //<editor-fold defaultstate="collapsed" desc="getters/setters">
+    public long getId() {
+        return id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+        
+    public User getOwner()
+    {
+        return this.owner;
+    }
+    
+    public void setOwner(User owner)
+    {
+        this.owner = owner;
+    }
+    //</editor-fold>
+
 }

@@ -52,7 +52,8 @@ public class UserService {
         ud.save(user);
     }
 
-    @RolesAllowed("admin")
+    //@RolesAllowed("admin")
+    @PermitAll
     public List<User> getAllUsers() {
         return ud.getAllUsers();
     }
@@ -60,6 +61,11 @@ public class UserService {
     @PermitAll
     public User getUserByUsername(String username) {
         return ud.getUserByUsername(username);
+    }
+    
+    @PermitAll
+    public User getUserByUserID(Long userID) {
+        return ud.getUserByUserID(userID);
     }
 
     @PermitAll

@@ -53,4 +53,15 @@ public class Group {
     public void AddUser(User user) {
         this.users.add(user);
     }
+
+    //<editor-fold defaultstate="collapsed" desc="getters/setters">
+    public String getGroupName() {
+        return groupName;
+    }
+    
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+    //</editor-fold>
+    
 }

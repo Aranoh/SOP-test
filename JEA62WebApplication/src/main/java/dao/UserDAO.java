@@ -25,6 +25,7 @@ public class UserDAO {
 
     public void save(User user) {
         em.persist(user);
+        em.flush();
     }
 
     public User getUserByUsername(String username) {
@@ -48,6 +49,12 @@ public class UserDAO {
     public List<User> getAllUsers() {
         Query q = em.createNamedQuery("User.getAllUsers");
         return q.getResultList();
+    }
+
+    public User getUserByUserID(Long userID) {
+        Query q = em.createNamedQuery("User.getUserByUserID");
+        q.setParameter("ID", userID);
+        return (User) q.getSingleResult();
     }
 
 }
